@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "i18n-redoc-fastapi"
+version = "0.1.0"
+description = ""
+authors = ["Egor <slamihin123@gmail.com>"]
+readme = "README.md"
+packages = [{include = "i18n_redoc_fastapi"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.115.12"
+uvicorn = "^0.34.3"
+typer = "^0.16.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.11.13"
+babel = "^2.17.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+exclude = ["src/neopay_api/db/migrations/versions"]
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "C90", # complex-structure
+]
+ignore = [
+    "E501", # line too long, handled by black
+    "B008",
+    "C416",
+    "B019", # Использование lru_cache Под вопросом
+]
